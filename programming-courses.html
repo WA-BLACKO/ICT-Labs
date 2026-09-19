@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Programming Courses | ICT Lab</title>
+
+    <link rel="stylesheet" href="programming-courses.css">
+</head>
+
+<body>
+
+<!-- ICT LAB LIQUID CURSOR -->
+
+
+<header class="topbar">
+
+    <button class="back-btn" onclick="goHome()">
+        ← ICT Lab
+    </button>
+
+    <div>
+        <h1>Programming Courses</h1>
+        <p>Learn. Code. Build.</p>
+    </div>
+
+</header>
+
+
+<main class="page-container">
+
+    <!-- COURSE SELECTION -->
+
+    <section id="courseSelection">
+
+        <div class="section-heading">
+            <span class="eyebrow">ICT LAB ACADEMY</span>
+            <h2>Choose your course</h2>
+            <p>
+                Step-by-step programming courses from beginner
+                concepts to practical development.
+            </p>
+        </div>
+
+
+        <div class="course-grid">
+
+            <!-- JAVA -->
+
+            <article class="course-card java-card"
+                     onclick="openCourse('java')">
+
+                <div class="course-icon">☕</div>
+
+                <span class="course-type">
+                    PROGRAMMING
+                </span>
+
+                <h3>Java</h3>
+
+                <p>
+                    Learn Java fundamentals, programming logic,
+                    object-oriented concepts and more.
+                </p>
+
+                <div class="course-bottom">
+
+                    <span id="javaCount">
+                        30 Episodes
+                    </span>
+
+                    <button>
+                        Start Course →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- C++ -->
+
+            <article class="course-card cpp-card"
+                     onclick="openCourse('cpp')">
+
+                <div class="course-icon">C++</div>
+
+                <span class="course-type">
+                    PROGRAMMING
+                </span>
+
+                <h3>C++</h3>
+
+                <p>
+                    Build strong programming fundamentals using
+                    one of the most powerful programming languages.
+                </p>
+
+                <div class="course-bottom">
+
+                    <span id="cppCount">
+                        30 Episodes
+                    </span>
+
+                    <button>
+                        Start Course →
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PYTHON -->
+
+            <article class="course-card python-card"
+                     onclick="openCourse('python')">
+
+                <div class="course-icon">🐍</div>
+
+                <span class="course-type">
+                    PROGRAMMING
+                </span>
+
+                <h3>Python</h3>
+
+                <p>
+                    Learn Python from the basics and gradually
+                    move into practical programming.
+                </p>
+
+                <div class="course-bottom">
+
+                    <span id="pythonCount">
+                        30 Episodes
+                    </span>
+
+                    <button>
+                        Start Course →
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- COURSE PLAYER -->
+
+    <section id="coursePlayer" class="hidden">
+
+        <button class="courses-back"
+                onclick="showCourses()">
+            ← All Courses
+        </button>
+
+
+        <div class="course-header">
+
+            <div>
+
+                <span class="eyebrow">
+                    ICT LAB COURSE
+                </span>
+
+                <h2 id="courseTitle">
+                    Java Programming
+                </h2>
+
+                <p id="courseDescription">
+                    Complete programming course
+                </p>
+
+            </div>
+
+
+            <div class="progress-info">
+
+                <strong id="progressText">
+                    0 / 30
+                </strong>
+
+                <span>
+                    completed
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESS BAR -->
+
+        <div class="progress-track">
+
+            <div
+                id="progressBar"
+                class="progress-bar">
+            </div>
+
+        </div>
+
+
+        <!-- MAIN COURSE AREA -->
+
+        <div class="learning-layout">
+
+
+            <!-- VIDEO SIDE -->
+
+            <div class="video-section">
+
+                <div class="video-wrapper">
+
+                    <iframe
+                        id="courseVideo"
+                        src=""
+                        allow="autoplay; fullscreen"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+
+                <div class="lesson-information">
+
+                    <span id="episodeNumber">
+                        EPISODE 01
+                    </span>
+
+                    <h2 id="episodeTitle">
+                        Introduction
+                    </h2>
+
+                </div>
+
+
+                <div class="lesson-controls">
+
+                    <button
+                        id="previousBtn"
+                        onclick="previousEpisode()">
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        id="completeBtn"
+                        onclick="toggleComplete()">
+                        ✓ Mark Completed
+                    </button>
+
+
+                    <button
+                        id="nextBtn"
+                        onclick="nextEpisode()">
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PLAYLIST -->
+
+            <aside class="playlist">
+
+                <div class="playlist-header">
+
+                    <div>
+                        <span class="eyebrow">
+                            COURSE CONTENT
+                        </span>
+
+                        <h3>Episodes</h3>
+                    </div>
+
+
+                    <input
+                        id="episodeSearch"
+                        type="search"
+                        placeholder="Search..."
+                        oninput="renderEpisodes()"
+                    >
+
+                </div>
+
+
+                <div
+                    id="episodeList"
+                    class="episode-list">
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="programming-courses.js"></script>
+
+</body>
+</html>

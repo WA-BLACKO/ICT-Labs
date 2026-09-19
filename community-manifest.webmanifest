@@ -1,0 +1,10 @@
+{
+  "name": "ICT Lab Community",
+  "short_name": "ICT Lab",
+  "start_url": "community.php",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a1821",
+  "theme_color": "#0a1821",
+  "description": "ICT Lab student learning community"
+}

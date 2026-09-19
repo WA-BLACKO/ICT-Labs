@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Simulations — ICT Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="CSSMain.css">
+<style>
+.category-page{max-width:1400px;margin:auto;padding:32px}
+.category-top{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-bottom:20px}
+.category-hero{padding:34px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,rgba(var(--accent-rgb),.10),rgba(var(--accent2-rgb),.07)),var(--panel);box-shadow:var(--shadow);margin-bottom:26px}
+.category-hero h1{font:700 clamp(32px,5vw,56px) "Space Grotesk";margin:10px 0 12px}
+.category-hero p{color:var(--muted);line-height:1.7;max-width:760px}
+.category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.category-tool-card{display:flex;align-items:center;gap:14px;min-height:110px;padding:18px;text-decoration:none;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-soft);transition:.2s}
+.category-tool-card:hover{transform:translateY(-3px);border-color:rgba(var(--accent-rgb),.38);box-shadow:var(--shadow-soft),var(--glow)}
+.category-tool-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex:0 0 52px;font-weight:800;color:var(--accent);background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.18)}
+.category-tool-copy{flex:1;min-width:0} .category-tool-copy h3{margin:0 0 5px;font-size:15px} .category-tool-copy p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.category-tool-arrow{color:var(--accent);font-size:20px}
+@media(max-width:950px){.category-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.category-page{padding:18px}.category-grid{grid-template-columns:1fr}.category-top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="category-page">
+    <div class="category-top">
+        <a href="index.html" class="btn">← Dashboard</a>
+        <a href="all-tools.html" class="btn primary">All Tools →</a>
+    </div>
+    <section class="category-hero">
+        <span class="eyebrow">SEE ICT IN ACTION</span>
+        <h1>Visual Simulations</h1>
+        <p>Open any simulation below to explore ICT concepts visually. Each card takes you directly to that tool's own HTML page.</p>
+    </section>
+    <div class="category-grid"><a class="category-tool-card" href="cpu-simulator.html">
+            <div class="category-tool-icon">◈</div>
+            <div class="category-tool-copy">
+                <h3>CPU Simulator</h3>
+                <p>Explore registers, instructions and processor behavior.</p>
+            </div>
+            <span class="category-tool-arrow">→</span>
+        </a>
+<a class="category-tool-card" href="fetch-execute-cycle.html">
+            <div class="category-tool-icon">↻</div>
+            <div class="category-tool-copy">
+                <h3>Fetch–Execute Cycle</h3>
+                <p>Visualize fetch, decode and execute operations.</p>
+            </div>
+            <span class="category-tool-arrow">→</span>
+        </a>
+<a class="category-tool-card" href="cpu-scheduling.html">
+            <div class="category-tool-icon">◫</div>
+            <div class="category-tool-copy">
+                <h3>CPU Scheduling</h3>
+                <p>Compare scheduling behavior and timing.</p>
+            </div>
+            <span class="category-tool-arrow">→</span>
+        </a>
+<a class="category-tool-card" href="logic-gate-builder.html">
+            <div class="category-tool-icon">◉</div>
+            <div class="category-tool-copy">
+                <h3>Logic Gate Builder</h3>
+                <p>Build and test digital logic circuits.</p>
+            </div>
+            <span class="category-tool-arrow">→</span>
+        </a>
+<a class="category-tool-card" href="karnaugh-map.html">
+            <div class="category-tool-icon">▦</div>
+            <div class="category-tool-copy">
+                <h3>Karnaugh Map</h3>
+                <p>Visualize and simplify Boolean expressions.</p>
+            </div>
+            <span class="category-tool-arrow">→</span>
+        </a>
+<a class="category-tool-card" href="flowchart-simulator.html">
+            <div class="category-tool-icon">⇢</div>
+            <div class="category-tool-copy">
+                <h3>Flowchart Simulator</h3>
+                <p>Step through algorithm flow visually.</p>
+            </div>
+            <span class="category-tool-arrow">→</span>
+        </a>
+<a class="category-tool-card" href="network-playground.html">
+            <div class="category-tool-icon">⌘</div>
+            <div class="category-tool-copy">
+                <h3>Network Playground</h3>
+                <p>Experiment with network communication and packets.</p>
+            </div>
+            <span class="category-tool-arrow">→</span>
+        </a>
+<a class="category-tool-card" href="er-diagram-builder.html">
+            <div class="category-tool-icon">◇</div>
+            <div class="category-tool-copy">
+                <h3>ER Diagram Builder</h3>
+                <p>Build database entities and relationships visually.</p>
+            </div>
+            <span class="category-tool-arrow">→</span>
+        </a></div>
+</main>
+</body>
+</html>

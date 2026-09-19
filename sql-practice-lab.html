@@ -1,0 +1,598 @@
+
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL Practice Lab — ICT Lab</title>
+  
+
+
+<link
+  rel="manifest"
+  href="manifest.json"
+>
+
+<meta
+  name="theme-color"
+  content="#07111f"
+>
+
+<meta
+  name="application-name"
+  content="ICT Lab"
+>
+
+<meta
+  name="mobile-web-app-capable"
+  content="yes"
+>
+
+<meta
+  name="apple-mobile-web-app-capable"
+  content="yes"
+>
+
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+>
+
+<meta
+  name="apple-mobile-web-app-title"
+  content="ICT Lab"
+>
+
+<link
+  rel="apple-touch-icon"
+  href="icons/icon-192.png"
+> 
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSSMain.css">
+</head>
+<body data-initial-tool="sql-lab">
+<div class="floating-particles" id="floatingParticles"></div>
+
+<body>
+
+
+<div id="pageLoader">
+    <svg class="infinity-svg" viewBox="0 0 200 100">
+        <path
+            class="infinity-line"
+            pathLength="100"
+            d="M50 50
+               C50 20, 85 20, 100 50
+               C115 80, 150 80, 150 50
+               C150 20, 115 20, 100 50
+               C85 80, 50 80, 50 50"
+        />
+    </svg>
+</div>
+
+<style>
+#pageLoader {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #07111f;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999999;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+.infinity-svg {
+    width: 170px;
+    height: 100px;
+}
+
+.infinity-line {
+    fill: none;
+    stroke: #6ee7d8;
+    stroke-width: 6;
+    stroke-linecap: round;
+
+    path-length: 100;
+
+    stroke-dasharray: 22 78;
+    stroke-dashoffset: 100;
+
+    filter:
+        drop-shadow(0 0 5px #6ee7d8)
+        drop-shadow(0 0 12px #6ee7d8);
+
+    animation: infinityMove 1.5s linear infinite;
+}
+
+@keyframes infinityMove {
+    from {
+        stroke-dashoffset: 100;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+#pageLoader.loader-hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+</style>
+
+<script>
+window.addEventListener("load", function () {
+
+    const loader = document.getElementById("pageLoader");
+
+    setTimeout(function () {
+
+        loader.classList.add("loader-hide");
+
+        setTimeout(function () {
+            loader.remove();
+        }, 500);
+
+    }, 2000);
+
+});
+</script>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" >
+      <div class="brand">
+    <div class="brand-mark infinity-brand-logo">
+        <svg viewBox="0 0 100 100" class="brand-infinity-svg">
+
+            <path
+                class="brand-infinity-track"
+                d="M18 50
+                   C18 30, 35 24, 50 40
+                   C65 56, 82 70, 82 50
+                   C82 30, 65 24, 50 40
+                   C35 56, 18 70, 18 50"
+            />
+
+            <path
+                class="brand-infinity-line"
+                d="M18 50
+                   C18 30, 35 24, 50 40
+                   C65 56, 82 70, 82 50
+                   C82 30, 65 24, 50 40
+                   C35 56, 18 70, 18 50"
+            />
+
+        </svg>
+    </div>
+
+    <div>
+        <strong>ICT Lab</strong>
+        <span>Learning platform</span>
+    </div>
+</div> 
+      <button class="mobile-close" id="closeMenu">×</button>
+
+      <nav class="nav">
+        <a class="nav-item active" data-tool="home" href="index.html">⌂ <span>Dashboard</span></a>
+        <div class="nav-label">CALCULATORS</div>
+        <a class="nav-item" data-tool="integration" href="integration.html">∫ <span>Integration</span></a>
+        <a class="nav-item" data-tool="number-system" href="number-system.html">01 <span>Number System</span></a>
+        <a class="nav-item" data-tool="binary" href="binary-calculator.html">▣ <span>Binary Calculator</span></a>
+        <a class="nav-item" data-tool="characters" href="character-representation.html">Aa <span>Character Representation</span></a>
+        <a class="nav-item" data-tool="expression" href="expression-table.html">ƒ <span>Expression Table</span></a>
+        <a class="nav-item" data-tool="kmap" href="karnaugh-map.html">▦ <span>Karnaugh Map</span></a>
+        <a class="nav-item" data-tool="logic-builder" href="logic-gate-builder.html">
+    ◉ <span>Logic Gate Builder</span>
+</a>
+<a class="nav-item" data-tool="storage-calc" href="storage-transmission.html">
+    MB <span>Storage & Transmission</span>
+</a>
+
+<a class="nav-item" data-tool="flowchart" href="flowchart-simulator.html">
+    ⇢ <span>Flowchart Simulator</span>
+</a>
+
+        <div class="nav-label">COMPUTER SYSTEMS</div>
+        <a class="nav-item" data-tool="cpu" href="cpu-simulator.html">◈ <span>CPU Simulator</span></a>
+        <a class="nav-item" data-tool="fetch" href="fetch-execute-cycle.html">↻ <span>Fetch–Execute Cycle</span></a>
+        <a class="nav-item" data-tool="scheduling" href="cpu-scheduling.html">◫ <span>CPU Scheduling</span></a>
+        <a class="nav-item" data-tool="er" href="er-diagram-builder.html">◇ <span>ER Diagram Builder</span></a>
+        <a class="nav-item" data-tool="normalizer" href="db-normalizer.html">⊞ <span>DB Normalizer</span></a>
+        <a class="nav-item" data-tool="sql-lab" href="sql-practice-lab.html">
+    SQL <span>SQL Practice Lab</span>
+</a>
+
+        <div class="nav-label">NETWORKING</div>
+        <a class="nav-item" data-tool="subnet" href="subnet-calculator.html">⌁ <span>Subnet Calculator</span></a>
+        <a class="nav-item" data-tool="ipmac" href="ip-mac-analyzer.html"># <span>IP / MAC Analyzer</span></a>
+        <a class="nav-item" data-tool="network" href="network-playground.html">⌘ <span>Network Playground</span></a>
+
+        <div class="nav-label">CODING & MEDIA</div>
+        <a class="nav-item" data-tool="python" href="python-idle.html">Py <span>Python IDLE</span></a>
+        <a class="nav-item" data-tool="web-editor" href="html-css-editor.html">&lt;/&gt; <span>HTML + CSS Editor</span></a>
+        <a class="nav-item" data-tool="qr" href="qr-formatter.html">QR <span>QR Formatter</span></a>
+
+        <div class="nav-label">PRACTICE</div>
+        <a class="nav-item" data-tool="quiz" href="mcq-quiz-engine.html">✓ <span>MCQ Quiz Engine</span></a>
+        <a class="nav-item" data-tool="games" href="mini-games-hub.html">◉ <span>Mini Games Hub</span></a>
+        <a class="nav-item" data-tool="resources" href="resources-exchange.html">⇄ <span>Resources Exchange</span></a>
+        <a class="nav-item" data-tool="ict-tools" href="ict-tool-block.html">✦ <span>ICT Tool Block</span></a>
+      
+       <div class="nav-label">RESOURCES n' MORE</div>
+        <a href="recordings.html"><button class="nav-item">📹 <span>Unitwise Recordings</span></button></a>
+       <a class="nav-item" data-tool="short-notes-papers" href="short-notes-papers.html">
+    📝 <span>Short Notes & Papers</span>
+</a>
+      <a href="tt.html"><button class="nav-item">⌚ <span>Time Sheduler</span></button></a>
+      
+     
+        <div class="developer-card">
+        <div class="developer-title">DEVELOPER</div>
+
+        <div class="developer-name">
+          Nadula Sasmitha Bandara
+        </div>
+
+        <a href="mailto:nadulasasmitha1212@gmail.com" class="developer-contact">
+          ✉ nadulasasmitha1212@gmail.com
+        </a>
+
+        <a href="tel:+94729001370" class="developer-contact">
+          ☎ +94 72 900 1370
+        </a>
+      </div>
+      
+</aside>
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="openMenu">☰</button>
+        <div class="crumb"><span>ICT Lab</span><b>/</b><strong id="pageTitle">SQL Practice Lab</strong></div>
+        <div class="top-actions">
+
+  
+<button
+  class="install-app-btn"
+  id="installAppBtn"
+  title="Install ICT Lab"
+  hidden
+>
+
+  <span class="install-app-icon">
+    ↓
+  </span>
+
+  <span>
+    Install App
+  </span>
+
+</button>
+  <button
+    class="icon-btn"
+    id="themeBtn"
+    title="Toggle theme"
+    aria-label="Toggle theme"
+  >
+    ☼
+  </button>
+
+  <div class="avatar">NS</div>
+
+</div>
+      </header>
+
+      <section class="content" id="content"></section>
+      <footer class="ict-footer">
+
+    <div class="footer-glow"></div>
+
+    <div class="footer-main">
+
+        <div class="footer-section footer-about">
+
+            <div class="footer-brand">
+                <div class="footer-brand-icon">ICT</div>
+
+                <h2>ICT Lab</h2>
+            </div>
+
+            <p>
+                An interactive learning environment built for
+                ICT students to practise, experiment and understand
+                important concepts through useful educational tools.
+            </p>
+
+            <div class="footer-tags">
+                <span>A/L ICT</span>
+                <span>Interactive Learning</span>
+                <span>Practice Tools</span>
+            </div>
+
+        </div>
+
+
+        
+        <div class="footer-section">
+
+            <h3>Quick Access</h3>
+
+            <a data-tool="home" href="index.html">
+                Home
+            </a>
+
+            <a data-tool="expression" href="expression-table.html">
+                Boolean Logic
+            </a>
+
+            <a data-tool="logic-builder" href="logic-gate-builder.html">
+                Logic Gate Builder
+            </a>
+
+            <a data-tool="sql-lab" href="sql-practice-lab.html">
+                SQL Practice Lab
+            </a>
+
+            <a data-tool="quiz" href="mcq-quiz-engine.html">
+                MCQ Quiz
+            </a>
+
+            <a data-tool="games" href="mini-games-hub.html">
+                Mini Games
+            </a>
+
+        </div>
+
+
+        <div class="footer-section">
+
+            <h3>Creator & Developer</h3>
+
+            <p>
+                Designed and developed by
+                <strong>Nadula Sasmitha Bandara</strong>
+                as an educational ICT project.
+            </p>
+
+            <div class="footer-contact">
+
+                <a href="mailto:nadulasasmitha1212@gmail.com">
+                    ✉ Email Developer
+                </a>
+
+                <a href="tel:+94729001370">
+                    ☎ Contact Developer
+                </a>
+
+            </div>
+
+            <button
+                class="footer-report"
+                id="reportProblem"
+                type="button"
+            >
+                ⚑ Report a Problem
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © <span id="footerYear"></span>
+            ICT Lab
+        </span>
+
+        <span>
+            Built for ICT Learning
+        </span>
+
+        <span class="footer-online">
+            <i></i>
+            ICT Lab Online
+        </span>
+
+    </div>
+
+
+</footer> 
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<div class="ict-ai-wrapper">
+
+    <button
+        id="ictAiButton"
+        class="ict-ai-button"
+        aria-label="Open ICT AI Assistant"
+    >
+
+        <div class="robot">
+
+            <div class="robot-antenna">
+                <span></span>
+            </div>
+
+            <div class="robot-head">
+
+                <div class="robot-eye left"></div>
+                <div class="robot-eye right"></div>
+
+                <div class="robot-mouth"></div>
+
+            </div>
+
+            <div class="robot-body">
+                AI
+            </div>
+
+            <div class="robot-hand">
+                👋
+            </div>
+
+        </div>
+
+        <span class="ai-online-dot"></span>
+
+    </button>
+
+
+
+    <div
+        id="ictAiChat"
+        class="ict-ai-chat"
+    >
+
+        <div class="ai-chat-header">
+
+            <div class="ai-header-robot">
+
+                <div class="mini-robot-face">
+                    <span>•</span>
+                    <span>‿</span>
+                    <span>•</span>
+                </div>
+
+            </div>
+
+            <div class="ai-header-info">
+
+                <strong>
+                    ICT Lab AI
+                </strong>
+
+                <span>
+                    <i></i>
+                    Online • ICT Assistant
+                </span>
+
+            </div>
+
+
+            <button
+                id="closeAiChat"
+                class="ai-close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <div
+            id="aiMessages"
+            class="ai-messages"
+        >
+
+            <div class="ai-message bot">
+
+                <div class="message-avatar">
+                    🤖
+                </div>
+
+                <div class="message-bubble">
+
+                    <strong>
+                        ICT Lab AI
+                    </strong>
+
+                    <p>
+                        Hey! 👋 I'm your ICT assistant.<br>
+                        Ask me anything about A/L ICT,<br>
+                        programming, databases, networking,<br>
+                        Boolean logic, computer systems,<br>
+                        number systems or web development.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ai-suggestions">
+
+            <button data-ai-question="Explain the OSI model">
+                OSI Model
+            </button>
+
+            <button data-ai-question="Teach me database normalization">
+                Normalization
+            </button>
+
+            <button data-ai-question="Explain Karnaugh maps">
+                K-Maps
+            </button>
+
+        </div>
+
+
+
+        <div class="ai-input-area">
+
+            <textarea
+                id="aiInput"
+                rows="1"
+                placeholder="Ask an ICT question..."
+            ></textarea>
+
+
+            <button
+                id="sendAiMessage"
+                class="ai-send"
+            >
+                ➤
+            </button>
+
+        </div>
+
+
+        <div class="ai-footer">
+            ICT Lab AI • Answers can contain mistakes, so verify important work.
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+  <script src="quizQuestions.js"></script>
+<script src="Main_JS.js"></script>
+<script>document.addEventListener("DOMContentLoaded", initStandaloneToolPage);</script>
+<script src="chatbot.js"></script>
+  <script>
+window.addEventListener("load", function () {
+
+    const loader = document.getElementById("loader");
+
+    loader.classList.add("hide");
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+/* =========================================================
+   ICT LAB AI — RESPONSIVE CHATBOT
+   ========================================================= */
+
+/* ---------- FLOATING WRAPPER ---------- */
+
+.ict-ai-wrapper {
+    position: fixed !important;
+    right: 22px !important;
+    bottom: 22px !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    z-index: 99990 !important;
+}
+
+body.chatbot-ready .ict-ai-wrapper {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+
+/* ---------- CHAT BUTTON ---------- */
+
+#ictAiButton {
+    position: relative !important;
+    z-index: 2 !important;
+
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+
+/* =========================================================
+   CHAT WINDOW — DESKTOP
+   ========================================================= */
+
+#ictAiChat {
+    position: absolute !important;
+
+    right: 0 !important;
+    left: auto !important;
+
+    bottom: 95px !important;
+
+    width: min(390px, calc(100vw - 30px)) !important;
+    height: min(610px, calc(100dvh - 130px)) !important;
+
+    max-width: none !important;
+    min-width: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+
+    transform: translateY(24px) scale(.94) !important;
+    transform-origin: bottom right !important;
+
+    transition:
+        opacity .28s ease,
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        visibility .28s ease !important;
+
+    z-index: 99991 !important;
+}
+
+
+/* ---------- OPEN STATE ---------- */
+
+#ictAiChat.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+
+    transform: translateY(0) scale(1) !important;
+}
+
+
+/* =========================================================
+   INTERNAL CHAT LAYOUT
+   ========================================================= */
+
+#ictAiChat .ai-messages {
+    flex: 1 1 auto !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    box-sizing: border-box !important;
+}
+
+
+#ictAiChat .ai-chat-header,
+#ictAiChat .ai-suggestions,
+#ictAiChat .ai-input-area,
+#ictAiChat .ai-footer {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+}
+
+
+#ictAiChat #aiInput {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+
+#ictAiChat .bot-message,
+#ictAiChat .user-message {
+    max-width: 85% !important;
+
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /*
+       IMPORTANT:
+       wrapper stays ONLY around floating AI button.
+       We do NOT stretch wrapper across screen.
+    */
+
+    .ict-ai-wrapper {
+        right: 14px !important;
+        bottom: 14px !important;
+
+        left: auto !important;
+        top: auto !important;
+
+        width: auto !important;
+        height: auto !important;
+
+        transform: none !important;
+    }
+
+
+    #ictAiButton {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+
+    /*
+       Actual chatbot becomes viewport-fixed.
+       It no longer depends on wrapper width.
+    */
+
+    #ictAiChat {
+        position: fixed !important;
+
+        left: 12px !important;
+        right: 12px !important;
+
+        top: auto !important;
+        bottom: 86px !important;
+
+        width: calc(100vw - 24px) !important;
+
+        height: 72dvh !important;
+        max-height: calc(100dvh - 110px) !important;
+
+        min-width: 0 !important;
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        transform-origin: bottom center !important;
+
+        box-sizing: border-box !important;
+
+        z-index: 999999 !important;
+    }
+
+
+    #ictAiChat.open {
+        transform: translateY(0) scale(1) !important;
+    }
+
+
+    /* Prevent children from making chat wider */
+
+    #ictAiChat > * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+
+    #ictAiChat .ai-chat-header {
+        width: 100% !important;
+    }
+
+
+    #ictAiChat .ai-messages {
+        width: 100% !important;
+
+        flex: 1 1 auto !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+
+    #ictAiChat .ai-suggestions {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+    }
+
+
+    #ictAiChat .ai-input-area {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+
+    #ictAiChat .ai-footer {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    #ictAiChat {
+        left: 8px !important;
+        right: 8px !important;
+
+        bottom: 78px !important;
+
+        width: calc(100vw - 16px) !important;
+
+        height: 74dvh !important;
+        max-height: calc(100dvh - 96px) !important;
+
+        border-radius: 18px !important;
+    }
+
+}
+
+/* =========================================================
+   MOBILE CHATBOT BACKGROUND BLUR
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Invisible backdrop normally */
+    .ict-ai-wrapper::before {
+        content: "";
+
+        position: fixed;
+        inset: 0;
+
+        background: rgba(3, 12, 24, 0);
+
+        -webkit-backdrop-filter: blur(0px);
+        backdrop-filter: blur(0px);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            opacity 0.3s ease,
+            backdrop-filter 0.3s ease,
+            background 0.3s ease;
+
+        z-index: 99998;
+    }
+
+
+    /* Chatbot opened */
+    .ict-ai-wrapper.chat-open::before {
+        background: rgba(3, 12, 24, 0.35);
+
+        -webkit-backdrop-filter: blur(7px);
+        backdrop-filter: blur(10px);
+
+        opacity: 1;
+        visibility: visible;
+
+        /* clicking background won't affect page */
+        pointer-events: auto;
+    }
+
+
+    /* Keep chatbot above blur */
+    #ictAiChat {
+        z-index: 999999 !important;
+    }
+
+
+    /* Keep AI button above blur too */
+    #ictAiButton {
+        position: relative !important;
+        z-index: 1000000 !important;
+    }
+}

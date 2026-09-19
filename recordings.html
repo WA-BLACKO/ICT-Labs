@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ICT Recordings</title>
+
+    <link rel="stylesheet" href="recordings.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <a href="index.html"><div class="brand-icon">ICT</div></a>
+
+            <div>
+                <div class="brand-title">ICT Lab</div>
+                <div class="brand-subtitle">RECORDINGS</div>
+            </div>
+        </div>
+
+        <div class="sidebar-title">
+            LESSONS
+        </div>
+
+        <nav class="lesson-menu">
+
+           <button onclick="openLesson('iot', this)">
+    <span>📡</span>
+    <span>IoT</span>
+</button>
+
+           <button onclick="openLesson('webdev', this)">
+    <span>🌐</span>
+    <span>Web Development</span>
+</button>
+
+           <button onclick="openLesson('python', this)">
+    <span>🐍</span>
+    <span>Python</span>
+</button>
+
+            <button onclick="openLesson('os', this)">
+    <span>💻</span>
+    <span>Operating Systems</span>
+</button>
+
+            <button onclick="openLesson('number', this)">
+    <span>🔢</span>
+    <span>Number Systems</span>
+</button>
+
+            <button onclick="openLesson('logic', this)">
+    <span>⚡</span>
+    <span>Logic Gates</span>
+</button>
+
+            <button onclick="openLesson('networking', this)">
+    <span>🌐</span>
+    <span>Networking</span>
+</button>
+
+            <button onclick="openLesson('database', this)">
+    <span>🗄️</span>
+    <span>Database</span>
+</button>
+
+            <button onclick="openLesson('information', this)">
+    <span>📊</span>
+    <span>Information Systems</span>
+</button>
+
+            <button onclick="openLesson('ecommerce', this)">
+    <span>🛒</span>
+    <span>E-Commerce</span>
+</button>
+
+            <button onclick="openLesson('future', this)">
+    <span>🚀</span>
+    <span>Future Trends</span>
+</button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="back-button" onclick="window.location.href='index.html'">
+                ← Back to Toolbox
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <div class="page-label">ICT EDUCATION</div>
+                <h1>ICT Recordings</h1>
+                <p>
+                    Watch your ICT lessons directly from the website.
+                </p>
+            </div>
+
+        </header>
+
+
+
+        <section id="lessonPage">
+
+            <div class="welcome-card">
+
+                <div class="welcome-icon">
+                    🎥
+                </div>
+
+                <div>
+                    <h2>Select a Lesson</h2>
+
+                    <p>
+                        Choose a lesson from the menu to view
+                        the available recordings.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="recordingGrid" class="recording-grid"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Question bank -->
+<script src="quizQuestions.js"></script>
+
+<!-- YouTube IFrame Player API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- Recording system -->
+<script src="recordings.js"></script>
+
+</body>
+</html>
